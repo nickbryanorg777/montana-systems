@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montana Meat Group — System Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e1e1e6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .env-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .env-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #222;
+        }
+
+        .env-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .prod .env-badge {
+            background: #059669;
+            color: #fff;
+        }
+
+        .staging .env-badge {
+            background: #d97706;
+            color: #fff;
+        }
+
+        .env-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .service-card {
+            background: #12121a;
+            border: 1px solid #1e1e2e;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-name {
+            font-size: 0.85rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 0.75rem;
+            background: #181825;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: #e1e1e6;
+            transition: background 0.15s;
+        }
+
+        .link-item:hover {
+            background: #22223a;
+        }
+
+        .link-label {
+            font-size: 0.9rem;
+        }
+
+        .link-url {
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        .link-arrow {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .note {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Montana Meat Group</h1>
+            <p class="subtitle">System Environment Overview</p>
+        </header>
+
+        <!-- PRODUCTION -->
+        <section class="env-section prod">
+            <div class="env-header">
+                <span class="env-badge">Production</span>
+                <span class="env-title">Live Systems</span>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">Storefronts</div>
+                <div class="links">
+                    <a href="https://montanameat.com" target="_blank" class="link-item">
+                        <span>
+                            <span class="link-label">Montana Meat</span>
+                            <span class="link-url"> — montanameat.com</span>
+                        </span>
+                        <span class="link-arrow">↗</span>
+                    </a>
+                    <a href="https://montanameatgroup.com" target="_blank" class="link-item">
+                        <span>
+                            <span class="link-label">Montana Meat Group</span>
+                            <span class="link-url"> — montanameatgroup.com</span>
+                        </span>
+                        <span class="link-arrow">↗</span>
+                    </a>
+                </div>
+                <p class="note">Single project — domain determines storefront. Non-dynamic pages managed via /studio</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">Medusa Backend</div>
+                <div class="links">
+                    <a href="https://api.montanameatgroup.com" target="_blank" class="link-item">
+                        <span>
+                            <span class="link-label">API</span>
+                            <span class="link-url"> — api.montanameatgroup.com</span>
+                        </span>
+                        <span class="link-arrow">↗</span>
+                    </a>
+                    <a href="https://admin.montanameatgroup.com/app" target="_blank" class="link-item">
+                        <span>
+                            <span class="link-label">Admin Panel</span>
+                            <span class="link-url"> — admin.montanameatgroup.com/app</span>
+                        </span>
+                        <span class="link-arrow">↗</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGING -->
+        <section class="env-section staging">
+            <div class="env-header">
+                <span class="env-badge">Staging</span>
+                <span class="env-title">Pre-Release Systems</span>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">Storefront</div>
+                <div class="links">
+                    <a href="https://staging.montanameat.com" target="_blank" class="link-item">
+                        <span>
+                            <span class="link-label">Staging Storefront</span>
+                            <span class="link-url"> — staging.montanameat.com</span>
+                        </span>
+                        <span class="link-arrow">↗</span>
+                    </a>
+                </div>
+                <p class="note">Includes /studio for page management</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">Medusa Backend (Staging)</div>
+                <div class="links">
+                    <a href="https://olympus-api-staging.w0.toprod.xyz/app" target="_blank" class="link-item">
+                        <span>
+                            <span class="link-label">API &amp; Admin</span>
+                            <span class="link-url"> — olympus-api-staging.w0.toprod.xyz/app</span>
+                        </span>
+                        <span class="link-arrow">↗</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Last updated: <span id="updated"></span></p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('updated').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>

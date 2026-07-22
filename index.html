@@ -277,12 +277,18 @@
         </div>
 
         <div class="tip">
-            <h3>Quick Guide</h3>
+            <h3>How Everything Fits Together</h3>
             <p>
+                <strong>Medusa</strong> is the engine — it handles products, inventory, orders, and payments.<br>
+                <strong>The Storefront</strong> is what customers browse and buy from.<br>
+                <strong>The Admin Panel</strong> is where you manage products, view orders, and configure the store.<br><br>
+                <strong>Olympus App</strong> (<a href="https://github.com/firepked/olympus-medusa-stores" target="_blank" style="color:#34d399;display:inline;text-decoration:underline;">github.com/firepked/olympus-medusa-stores</a>) — this is the custom app that powers both the storefronts and the admin panel.
+                It connects to Medusa's API and gives us a tailored experience for managing Montana Meat.<br><br>
+                <strong>Studio</strong> (/studio) — the page builder. Create and edit static pages (About, FAQ, etc.) without touching code.
+                Available on both Prod and Staging, but they are separate — changes in Studio on Staging won't show up on Prod.<br><br>
                 <strong>Green = Live</strong> — real customers, real orders, real money. Be careful here.<br>
                 <strong>Yellow = Test</strong> — safe playground. Break things here, not there.<br><br>
-                Both sides have a <strong>Shop</strong> (what customers see) and a <strong>Backend</strong> (where you manage products &amp; orders).
-                They are <strong>completely separate</strong> — nothing in Test can affect Production.
+                Both environments are <strong>completely separate</strong> — nothing in Test can affect Production.
             </p>
         </div>
 

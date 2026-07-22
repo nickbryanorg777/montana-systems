@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montana Meat Group — System Overview</title>
+    <title>Montana Meat — Systems</title>
     <style>
         * {
             margin: 0;
@@ -13,139 +13,189 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0f;
+            background: #09090b;
             color: #e1e1e6;
             min-height: 100vh;
-            padding: 2rem;
+            padding: 2rem 1rem;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            color: #888;
-            font-size: 0.9rem;
-        }
-
-        .env-section {
             margin-bottom: 2.5rem;
         }
 
-        .env-header {
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .column {
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .prod-column {
+            background: #0a1a12;
+            border: 1px solid #0d3320;
+        }
+
+        .test-column {
+            background: #1a1208;
+            border: 1px solid #332a0d;
+        }
+
+        .col-header {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #222;
-        }
-
-        .env-badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .prod .env-badge {
-            background: #059669;
-            color: #fff;
-        }
-
-        .staging .env-badge {
-            background: #d97706;
-            color: #fff;
-        }
-
-        .env-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .service-card {
-            background: #12121a;
-            border: 1px solid #1e1e2e;
-            border-radius: 0.75rem;
-            padding: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .service-name {
-            font-size: 0.85rem;
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
-        }
-
-        .links {
-            display: flex;
-            flex-direction: column;
             gap: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
-        .link-item {
+        .col-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .prod-column .col-header h2 {
+            color: #34d399;
+        }
+
+        .test-column .col-header h2 {
+            color: #fbbf24;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .prod-column .dot {
+            background: #34d399;
+            box-shadow: 0 0 8px #34d399;
+        }
+
+        .test-column .dot {
+            background: #fbbf24;
+            box-shadow: 0 0 8px #fbbf24;
+        }
+
+        .col-desc {
+            color: #777;
+            font-size: 0.8rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .group {
+            background: rgba(255,255,255,0.03);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .group:last-child {
+            margin-bottom: 0;
+        }
+
+        .group-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #555;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.5rem 0.75rem;
-            background: #181825;
+            padding: 0.7rem 0.9rem;
+            background: rgba(255,255,255,0.04);
             border-radius: 0.5rem;
             text-decoration: none;
-            color: #e1e1e6;
+            color: #d4d4d8;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
             transition: background 0.15s;
         }
 
-        .link-item:hover {
-            background: #22223a;
+        .btn:hover {
+            background: rgba(255,255,255,0.08);
         }
 
-        .link-label {
-            font-size: 0.9rem;
+        .btn:last-child {
+            margin-bottom: 0;
         }
 
-        .link-url {
+        .btn-right {
+            color: #555;
             font-size: 0.8rem;
-            color: #6b7280;
-            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-family: 'SF Mono', monospace;
         }
 
-        .link-arrow {
-            color: #6b7280;
-            font-size: 0.9rem;
+        .arrow {
+            color: #444;
+            font-size: 1rem;
+            margin-left: 0.5rem;
         }
 
-        .note {
-            font-size: 0.75rem;
-            color: #666;
-            margin-top: 0.5rem;
-            font-style: italic;
+        .tip {
+            margin-top: 2.5rem;
+            text-align: center;
+            padding: 1rem;
+            background: #111;
+            border-radius: 0.75rem;
+            border: 1px solid #1a1a1a;
+        }
+
+        .tip h3 {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tip p {
+            font-size: 0.85rem;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .tip strong {
+            color: #e1e1e6;
         }
 
         footer {
             text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid #222;
-            color: #555;
-            font-size: 0.75rem;
+            margin-top: 2rem;
+            color: #333;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 700px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -153,92 +203,78 @@
     <div class="container">
         <header>
             <h1>Montana Meat Group</h1>
-            <p class="subtitle">System Environment Overview</p>
+            <p class="subtitle">All systems at a glance</p>
         </header>
 
-        <!-- PRODUCTION -->
-        <section class="env-section prod">
-            <div class="env-header">
-                <span class="env-badge">Production</span>
-                <span class="env-title">Live Systems</span>
-            </div>
+        <div class="grid">
+            <!-- PROD COLUMN -->
+            <div class="column prod-column">
+                <div class="col-header">
+                    <span class="dot"></span>
+                    <h2>Production</h2>
+                </div>
+                <p class="col-desc">Live — this is what customers see</p>
 
-            <div class="service-card">
-                <div class="service-name">Storefronts</div>
-                <div class="links">
-                    <a href="https://montanameat.com" target="_blank" class="link-item">
-                        <span>
-                            <span class="link-label">Montana Meat</span>
-                            <span class="link-url"> — montanameat.com</span>
-                        </span>
-                        <span class="link-arrow">↗</span>
+                <div class="group">
+                    <div class="group-label">🛒 Online Shops</div>
+                    <a href="https://montanameat.com" target="_blank" class="btn">
+                        Montana Meat
+                        <span><span class="btn-right">montanameat.com</span><span class="arrow">↗</span></span>
                     </a>
-                    <a href="https://montanameatgroup.com" target="_blank" class="link-item">
-                        <span>
-                            <span class="link-label">Montana Meat Group</span>
-                            <span class="link-url"> — montanameatgroup.com</span>
-                        </span>
-                        <span class="link-arrow">↗</span>
+                    <a href="https://montanameatgroup.com" target="_blank" class="btn">
+                        Montana Meat Group
+                        <span><span class="btn-right">montanameatgroup.com</span><span class="arrow">↗</span></span>
                     </a>
                 </div>
-                <p class="note">Single project — domain determines storefront. Non-dynamic pages managed via /studio</p>
-            </div>
 
-            <div class="service-card">
-                <div class="service-name">Medusa Backend</div>
-                <div class="links">
-                    <a href="https://api.montanameatgroup.com" target="_blank" class="link-item">
-                        <span>
-                            <span class="link-label">API</span>
-                            <span class="link-url"> — api.montanameatgroup.com</span>
-                        </span>
-                        <span class="link-arrow">↗</span>
+                <div class="group">
+                    <div class="group-label">⚙️ Backend (Medusa)</div>
+                    <a href="https://api.montanameatgroup.com" target="_blank" class="btn">
+                        API
+                        <span><span class="btn-right">api.montanameatgroup.com</span><span class="arrow">↗</span></span>
                     </a>
-                    <a href="https://admin.montanameatgroup.com/app" target="_blank" class="link-item">
-                        <span>
-                            <span class="link-label">Admin Panel</span>
-                            <span class="link-url"> — admin.montanameatgroup.com/app</span>
-                        </span>
-                        <span class="link-arrow">↗</span>
+                    <a href="https://admin.montanameatgroup.com/app" target="_blank" class="btn">
+                        Admin Panel
+                        <span><span class="btn-right">admin.montanameatgroup.com/app</span><span class="arrow">↗</span></span>
                     </a>
                 </div>
             </div>
-        </section>
 
-        <!-- STAGING -->
-        <section class="env-section staging">
-            <div class="env-header">
-                <span class="env-badge">Staging</span>
-                <span class="env-title">Pre-Release Systems</span>
-            </div>
+            <!-- TEST COLUMN -->
+            <div class="column test-column">
+                <div class="col-header">
+                    <span class="dot"></span>
+                    <h2>Staging / Test</h2>
+                </div>
+                <p class="col-desc">Sandbox — safe to break, won't affect live</p>
 
-            <div class="service-card">
-                <div class="service-name">Storefront</div>
-                <div class="links">
-                    <a href="https://staging.montanameat.com" target="_blank" class="link-item">
-                        <span>
-                            <span class="link-label">Staging Storefront</span>
-                            <span class="link-url"> — staging.montanameat.com</span>
-                        </span>
-                        <span class="link-arrow">↗</span>
+                <div class="group">
+                    <div class="group-label">🛒 Test Shop</div>
+                    <a href="https://staging.montanameat.com" target="_blank" class="btn">
+                        Staging Storefront
+                        <span><span class="btn-right">staging.montanameat.com</span><span class="arrow">↗</span></span>
                     </a>
                 </div>
-                <p class="note">Includes /studio for page management</p>
-            </div>
 
-            <div class="service-card">
-                <div class="service-name">Medusa Backend (Staging)</div>
-                <div class="links">
-                    <a href="https://olympus-api-staging.w0.toprod.xyz/app" target="_blank" class="link-item">
-                        <span>
-                            <span class="link-label">API &amp; Admin</span>
-                            <span class="link-url"> — olympus-api-staging.w0.toprod.xyz/app</span>
-                        </span>
-                        <span class="link-arrow">↗</span>
+                <div class="group">
+                    <div class="group-label">⚙️ Test Backend (Medusa)</div>
+                    <a href="https://olympus-api-staging.w0.toprod.xyz/app" target="_blank" class="btn">
+                        API + Admin
+                        <span><span class="btn-right">olympus-api-staging.w0.toprod.xyz</span><span class="arrow">↗</span></span>
                     </a>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <div class="tip">
+            <h3>Quick Guide</h3>
+            <p>
+                <strong>Green = Live</strong> — real customers, real orders, real money. Be careful here.<br>
+                <strong>Yellow = Test</strong> — safe playground. Break things here, not there.<br><br>
+                Both sides have a <strong>Shop</strong> (what customers see) and a <strong>Backend</strong> (where you manage products &amp; orders).
+                They are <strong>completely separate</strong> — nothing in Test can affect Production.
+            </p>
+        </div>
 
         <footer>
             <p>Last updated: <span id="updated"></span></p>
